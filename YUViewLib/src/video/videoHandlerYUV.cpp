@@ -2479,13 +2479,11 @@ videoHandlerYUV::videoHandlerYUV() : videoHandler()
   // If we know nothing about the YUV format, assume YUV 4:2:0 8 bit planar by default.
   this->srcPixelFormat = PixelFormatYUV(Subsampling::YUV_420, 8, PlaneOrder::YUV);
 
+  this->presetList.append(PixelFormatYUV(Subsampling::YUV_420, 8, PlaneOrder::YUV, false, {0, 1/2}, true)); // nv12
+  this->presetList.append(PixelFormatYUV(Subsampling::YUV_420, 16, PlaneOrder::YUV, false, {0, 1/2}, true)); // p016
   this->presetList.append(PixelFormatYUV(Subsampling::YUV_420, 8, PlaneOrder::YUV)); // YUV 4:2:0
   this->presetList.append(
       PixelFormatYUV(Subsampling::YUV_420, 10, PlaneOrder::YUV)); // YUV 4:2:0 10 bit
-  this->presetList.append(PixelFormatYUV(Subsampling::YUV_422, 8, PlaneOrder::YUV)); // YUV 4:2:2
-  this->presetList.append(PixelFormatYUV(Subsampling::YUV_444, 8, PlaneOrder::YUV)); // YUV 4:4:4
-  for (auto e : PredefinedPixelFormatMapper.getEnums())
-    this->presetList.append(e);
 }
 
 videoHandlerYUV::~videoHandlerYUV()
