@@ -198,6 +198,10 @@ private:
 #define VERSION_CHECK 1
 #endif
 
+//disable version check
+#undef VERSION_CHECK
+#define VERSION_CHECK 0
+
 #define MAX_RECENT_FILES 10
 
 /// ---- Custom types
